@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Киберурок · вход</title>
+<meta name="description" content="Выбери класс и своё имя — получишь логин, пароль и кнопку входа на учебную платформу Киберурок.">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#f4f7fd; --card:#fff; --ink:#12295f; --blue:#1f4fd8; --blue-d:#1a41b4;
+  --blue-l:#e9f0ff; --blue-l2:#f5f8ff; --muted:#7488a8; --line:#e0e8f7;
+  --green:#12a06a; --green-l:#eaf9f2; --warn:#a9660f; --warn-l:#fff6e8;
+}
+html,body{margin:0;padding:0}
+body{font-family:'Manrope','Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+  color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(#e6ecfa 1px,transparent 1px),linear-gradient(90deg,#e6ecfa 1px,transparent 1px);
+  background-size:34px 34px;min-height:100vh;line-height:1.45}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input{font-family:inherit}
+.wrap{max-width:560px;margin:0 auto;padding:22px 16px 48px}
+
+.logo{display:flex;align-items:center;gap:11px;margin-bottom:20px}
+.logo .sq{width:40px;height:40px;border-radius:13px;background:var(--blue);display:grid;place-items:center;flex:none}
+.logo .sq svg{width:22px;height:22px}
+.logo b{display:block;font-size:17px;font-weight:900;letter-spacing:-.02em}
+.logo span{display:block;font-size:11.5px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted)}
+
+.card{background:var(--card);border-radius:22px;padding:22px 20px;
+  box-shadow:0 10px 30px rgba(22,48,110,.07);border:1px solid var(--line)}
+h1{margin:0 0 4px;font-size:25px;font-weight:900;letter-spacing:-.025em}
+.sub{margin:0 0 18px;color:var(--muted);font-size:14.5px}
+
+.back{display:inline-flex;align-items:center;gap:7px;margin-bottom:14px;padding:8px 13px 8px 10px;
+  border-radius:11px;background:var(--blue-l2);border:1.5px solid var(--line);
+  font-size:13.5px;font-weight:800;color:var(--blue)}
+.back:hover{border-color:#b9c9ef}
+
+.grades{display:grid;gap:16px}
+.grade .gl{font-size:11.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px}
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:10px}
+.chip{padding:18px 10px;border-radius:17px;border:2px solid var(--line);background:#fff;
+  font-size:26px;font-weight:900;letter-spacing:-.02em;text-align:center;transition:.14s;color:var(--ink)}
+.chip small{display:block;font-size:11.5px;font-weight:800;letter-spacing:.06em;color:var(--muted);margin-top:3px}
+.chip:hover{border-color:#b9c9ef;transform:translateY(-2px)}
+
+.find{width:100%;padding:14px 16px;border-radius:14px;border:2px solid var(--line);
+  font-size:16px;margin-bottom:12px;background:#fff}
+.find:focus{outline:none;border-color:var(--blue)}
+.names{display:grid;gap:8px;max-height:58vh;overflow-y:auto;padding:2px}
+.nm{display:flex;align-items:center;gap:12px;padding:14px 15px;border-radius:14px;
+  border:2px solid var(--line);background:#fff;font-size:16.5px;font-weight:700;
+  text-align:left;width:100%;transition:.12s}
+.nm:hover{border-color:#b9c9ef;background:var(--blue-l2)}
+.nm .av{flex:none;width:34px;height:34px;border-radius:12px;background:var(--blue-l);
+  color:var(--blue);display:grid;place-items:center;font-size:14px;font-weight:900}
+.none{padding:22px;text-align:center;color:var(--muted);font-size:15px}
+
+.who{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.who .av{flex:none;width:46px;height:46px;border-radius:15px;background:var(--blue);
+  color:#fff;display:grid;place-items:center;font-size:17px;font-weight:900}
+.who b{display:block;font-size:19px;font-weight:900;letter-spacing:-.02em}
+.who span{display:block;font-size:13px;font-weight:800;color:var(--muted);letter-spacing:.06em}
+
+.field{border-radius:18px;border:2px solid #cfdcfb;
+  background:linear-gradient(135deg,#f3f7ff,#e9f0ff);padding:16px 18px;margin-bottom:12px}
+.field .fl{font-size:11.5px;font-weight:900;letter-spacing:.1em;color:var(--muted)}
+.val{font-size:26px;font-weight:900;color:#16307a;letter-spacing:-.01em;
+  overflow-wrap:anywhere;margin:4px 0 0;line-height:1.2}
+.val.long{font-size:18px;letter-spacing:0}
+.pwrow{display:flex;align-items:center;gap:10px;margin-top:4px;flex-wrap:wrap}
+.pwv{font-size:24px;font-weight:900;letter-spacing:.08em;color:#16307a;font-variant-numeric:tabular-nums}
+.eye{padding:8px 13px;border-radius:12px;border:2px solid #cfdcfb;background:#fff;
+  font-size:13.5px;font-weight:800;color:var(--blue)}
+.eye:hover{border-color:var(--blue)}
+.cp{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;margin-top:11px;
+  padding:12px 14px;border-radius:13px;border:2px solid #cfdcfb;background:#fff;
+  font-size:15px;font-weight:800;color:var(--blue);transition:.14s}
+.cp:hover{border-color:var(--blue)}
+.cp svg{width:17px;height:17px;flex:none}
+.cp.done{border-color:var(--green);color:var(--green);background:var(--green-l)}
+.cp.fail{border-color:#e0a03f;color:var(--warn);background:var(--warn-l)}
+.note{margin:-2px 0 12px;font-size:13px;font-weight:700;color:var(--warn);line-height:1.4}
+
+.go{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;margin-top:6px;
+  padding:19px 18px;border-radius:17px;background:var(--blue);color:#fff;
+  font-size:18px;font-weight:900;letter-spacing:-.01em;text-decoration:none;
+  box-shadow:0 10px 26px rgba(31,79,216,.3);transition:.14s}
+.go:hover{background:var(--blue-d);transform:translateY(-1px)}
+.go svg{width:20px;height:20px;flex:none}
+.addr{margin:9px 0 0;text-align:center;font-size:12.5px;color:var(--muted);overflow-wrap:anywhere}
+.tip{margin:16px 0 0;padding:13px 15px;border-radius:14px;background:var(--blue-l2);
+  border:1px solid var(--line);font-size:13.5px;color:var(--muted);line-height:1.5}
+.again{display:flex;gap:10px;margin-top:14px}
+.again button{flex:1;padding:13px;border-radius:13px;border:2px solid var(--line);
+  background:#fff;font-size:14px;font-weight:800;color:var(--blue)}
+.again button:hover{border-color:#b9c9ef}
+@media(max-width:380px){.wrap{padding:16px 12px 40px}.card{padding:18px 15px}h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">
+    <span class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3.5v6c0 5-3.4 8.9-8 10.5-4.6-1.6-8-5.5-8-10.5v-6z"/>
+      <path d="M9 12l2.2 2.2L15.5 10"/></svg></span>
+    <span><b>Киберурок</b><span>вход на платформу</span></span>
+  </div>
+  <div id="app"></div>
+</div>
+
+<script>
+const ROSTER = {"1A": [{"name": "Агаларова Афина", "login": "1А-1", "pass": "784983"}, {"name": "Афанасьев Астин", "login": "1А-2", "pass": "190393"}, {"name": "Березин Артем", "login": "1А-3", "pass": "901613"}, {"name": "Борисычев Федор", "login": "1А-4", "pass": "944813"}, {"name": "Герич Ярослав", "login": "1А-5", "pass": "968526"}, {"name": "Даванкова Ева", "login": "1А-6", "pass": "754012"}, {"name": "Занозина Анна", "login": "1А-7", "pass": "708234"}, {"name": "Иванцова Владислава", "login": "1А-8", "pass": "175876"}, {"name": "Ивашёва Дарья", "login": "1А-9", "pass": "233731"}, {"name": "Кирсанова Екатерина", "login": "1А-10", "pass": "190715"}, {"name": "Коровкина Татьяна", "login": "1А-11", "pass": "604815"}, {"name": "Котов Евгений", "login": "1А-12", "pass": "692600"}, {"name": "Кузнецов Мирон", "login": "1А-13", "pass": "700601"}, {"name": "Лунегова Валерия", "login": "1А-14", "pass": "552230"}, {"name": "Мишнова Дарья", "login": "1А-15", "pass": "453886"}, {"name": "Набиев Мирослав", "login": "1А-17", "pass": "979639"}, {"name": "Пантюхин Леон", "login": "1А-18", "pass": "133166"}, {"name": "Романченко Александр", "login": "1А-19", "pass": "907307"}, {"name": "Супрун Андрей", "login": "1А-20", "pass": "833564"}, {"name": "Ушачева Есения", "login": "1А-21", "pass": "596869"}, {"name": "Федорина Софья", "login": "1А-22", "pass": "497329"}, {"name": "Цымбалова Полина", "login": "1А-23", "pass": "327768"}, {"name": "Штельмахов Иван", "login": "1А-24", "pass": "950090"}], "1B": [{"name": "Вакс Михаил", "login": "1В-1", "pass": "861846"}, {"name": "Войтович Марина", "login": "1В-2", "pass": "177736"}, {"name": "Волошина Мария-Виктория", "login": "1В-3", "pass": "308646"}, {"name": "Ворст Риана", "login": "1В-4", "pass": "436776"}, {"name": "Генке Кира", "login": "1В-5", "pass": "306062"}, {"name": "Гучас Евгения", "login": "1В-6", "pass": "798582"}, {"name": "Данцкер Лев", "login": "1В-7", "pass": "222257"}, {"name": "Ефимушкин Илья", "login": "1В-8", "pass": "806943"}, {"name": "Качан Анна", "login": "1В-9", "pass": "600569"}, {"name": "Королёв Макар", "login": "1В-10", "pass": "321781"}, {"name": "Кудрявцев Лев", "login": "1В-11", "pass": "711761"}, {"name": "Кучеренко Артём", "login": "1В-12", "pass": "111784"}, {"name": "Мазанова Селин", "login": "1В-13", "pass": "398757"}, {"name": "Мирзоян София", "login": "1В-14", "pass": "782589"}, {"name": "Павлова Василиса", "login": "1В-15", "pass": "591630"}, {"name": "Пищулина Ксения", "login": "1В-16", "pass": "626292"}, {"name": "Сабулуа Елена", "login": "1В-17", "pass": "760656"}, {"name": "Савенкова Екатерина", "login": "1В-18", "pass": "122570"}, {"name": "Тимофеев Илья", "login": "1В-19", "pass": "111570"}, {"name": "Тыщенко София", "login": "1В-20", "pass": "810930"}, {"name": "Филиппова Диана", "login": "1В-21", "pass": "938824"}], "1C": [{"name": "Алькинский Глеб", "login": "1С-1", "pass": "985479"}, {"name": "Баканова Анастасия", "login": "1С-2", "pass": "541956"}, {"name": "Балац Алиса", "login": "1С-3", "pass": "420402"}, {"name": "Баско Алисия", "login": "mshuchenik-11764m431991", "pass": "142935"}, {"name": "Бояринов Борис", "login": "1С-5", "pass": "774819"}, {"name": "Буниатян Микаэл", "login": "1С-4", "pass": "955208"}, {"name": "Вольский Александр", "login": "1С-6", "pass": "283263"}, {"name": "Гаврилов Елисей", "login": "1С-7", "pass": "934597"}, {"name": "Грановский Евгений", "login": "1С-9", "pass": "447126"}, {"name": "Грачева Сияна", "login": "1С-10", "pass": "992719"}, {"name": "Захиди София", "login": "1С-11", "pass": "133954"}, {"name": "Кальницкая Мирослава", "login": "1С-12", "pass": "459266"}, {"name": "Кашбиева Агата", "login": "1С-13", "pass": "833942"}, {"name": "Клячин Игнат", "login": "1С-14", "pass": "327306"}, {"name": "Котова Анастасия", "login": "1С-15", "pass": "331997"}, {"name": "Мартиросова Алиса", "login": "1С-16", "pass": "943684"}, {"name": "Погосян Михаил", "login": "1С-17", "pass": "713777"}, {"name": "Прошко Михаил", "login": "1С-18", "pass": "378972"}, {"name": "Родоманова Полина", "login": "1С-19", "pass": "884477"}, {"name": "Саджая Леван", "login": "1С-20", "pass": "826953"}, {"name": "Сержанова София", "login": "1С-21", "pass": "609028"}, {"name": "Сотникова Элеонора", "login": "1С-22", "pass": "339874"}, {"name": "Шейкин Лев", "login": "1С-23", "pass": "301017"}, {"name": "Шестакова Эмилия", "login": "1С-24", "pass": "602402"}], "1D": [{"name": "Андрейчиков Платон", "login": "1D-1", "pass": "373214"}, {"name": "Аперян Милана", "login": "1D-2", "pass": "740572"}, {"name": "Болотов Арсений", "login": "1D-3", "pass": "841117"}, {"name": "Викулина Маргарита", "login": "1D-4", "pass": "606740"}, {"name": "Внукова Ульяна", "login": "1D-5", "pass": "412493"}, {"name": "Епифанов Александр", "login": "1D-6", "pass": "155681"}, {"name": "Карапетова Алина", "login": "1D-7", "pass": "847857"}, {"name": "Кузнецов Марк", "login": "1D-8", "pass": "725360"}, {"name": "Мальсагова Луиза", "login": "1D-21", "pass": "433729"}, {"name": "Манеева Нина", "login": "1D-9", "pass": "407213"}, {"name": "Нагайцева Мелисса", "login": "1D-22", "pass": "795123"}, {"name": "Плешакова Софья", "login": "1D-10", "pass": "156991"}, {"name": "Рожкова Мира", "login": "1D-11", "pass": "920050"}, {"name": "Сабиров Арслан", "login": "1D-12", "pass": "801780"}, {"name": "Смирнов Роман", "login": "1D-13", "pass": "381648"}, {"name": "Стефанчук Стефания", "login": "1D-14", "pass": "692039"}, {"name": "Струк Василиса", "login": "1D-15", "pass": "461016"}, {"name": "Татаринов Гордей", "login": "1D-16", "pass": "172690"}, {"name": "Цуприк Григорий", "login": "1D-17", "pass": "718424"}, {"name": "Черкасова Арина", "login": "1D-18", "pass": "305161"}, {"name": "Швец Давид", "login": "1D-23", "pass": "199148"}, {"name": "Эльбикова Даяна", "login": "1D-20", "pass": "176618"}], "2A": [{"name": "Аникина Маргарита", "login": "2А-1", "pass": "590108"}, {"name": "Вельович Марк", "login": "2А-2", "pass": "118311"}, {"name": "Власьева Арина", "login": "2А-3", "pass": "948732"}, {"name": "Глушков Кирилл", "login": "2А-4", "pass": "981969"}, {"name": "Гусева Полина", "login": "2А-5", "pass": "292972"}, {"name": "Казаков Николай", "login": "2А-6", "pass": "325396"}, {"name": "Клейменова Вера", "login": "2А-7", "pass": "209434"}, {"name": "Косинская София", "login": "2А-8", "pass": "167750"}, {"name": "Кудряшов Кирилл", "login": "2А-9", "pass": "760294"}, {"name": "Мазура Марк", "login": "2A-10", "pass": "346884"}, {"name": "Орловский Давид", "login": "2A-11", "pass": "347333"}, {"name": "Охотин Иван", "login": "2A-12", "pass": "605036"}, {"name": "Петелин Сергей", "login": "2A-13", "pass": "375299"}, {"name": "Прошин Александр", "login": "2A-14", "pass": "908710"}, {"name": "Пряслова Полина", "login": "2A-15", "pass": "486109"}, {"name": "Скакун Полина", "login": "2A-16", "pass": "928900"}, {"name": "Слуцкий Леонид", "login": "2A-17", "pass": "802242"}, {"name": "Соколов Савелий", "login": "2A-18", "pass": "487921"}, {"name": "Тамразян Лусине", "login": "2A-19", "pass": "862513"}, {"name": "Федоров Даниил", "login": "2A-20", "pass": "634029"}, {"name": "Харитонов Север", "login": "2A-21", "pass": "116391"}, {"name": "Харитонова Таис", "login": "2A-22", "pass": "393831"}, {"name": "Шульга Яна", "login": "2A-23", "pass": "894774"}, {"name": "Якимчук Василина", "login": "2A-24", "pass": "521039"}], "2B": [{"name": "Архипова Арина", "login": "2В-1", "pass": "161101"}, {"name": "Белов Давид", "login": "2В-2", "pass": "721894"}, {"name": "Боев Егор", "login": "2В-3", "pass": "971972"}, {"name": "Винклер Анастасия", "login": "2В-4", "pass": "952844"}, {"name": "Галлямов Леонард", "login": "2В-5", "pass": "805931"}, {"name": "Громова Елизавета", "login": "2В-6", "pass": "377204"}, {"name": "Дмитренко Всеволод", "login": "2В-7", "pass": "420126"}, {"name": "Евсеева Стефания", "login": "2В-8", "pass": "926987"}, {"name": "Емельянова Агния", "login": "2В-9", "pass": "343594"}, {"name": "Казаков Андрей", "login": "2В-10", "pass": "871912"}, {"name": "Калёнова Ирина", "login": "2В-11", "pass": "965622"}, {"name": "Каневский Игорь", "login": "2В-12", "pass": "852464"}, {"name": "Корковидов Сергей", "login": "2В-13", "pass": "593283"}, {"name": "Костянецкая Екатерина", "login": "2В-14", "pass": "566778"}, {"name": "Кофанов Мирон", "login": "2В-15", "pass": "543218"}, {"name": "Кучерен Григорий", "login": "2В-16", "pass": "546453"}, {"name": "Луценко Алексей", "login": "2В-17", "pass": "263642"}, {"name": "Мардиросов Феликс", "login": "2В-18", "pass": "526289"}, {"name": "Очкал Федор", "login": "2В-19", "pass": "376675"}, {"name": "Ошарина Арина", "login": "2В-20", "pass": "852619"}, {"name": "Полх Диана", "login": "2В-21", "pass": "419089"}, {"name": "Соловьева Варвара", "login": "2В-22", "pass": "923226"}, {"name": "Чикина Ольга", "login": "2В-23", "pass": "731576"}], "2C": [{"name": "Вареник Варвара", "login": "2С-1", "pass": "730079"}, {"name": "Вилькомир Полина", "login": "2С-2", "pass": "840298"}, {"name": "Гольдштауб Ярослав", "login": "2С-3", "pass": "306568"}, {"name": "Жауи Шарлотта", "login": "2С-4", "pass": "909027"}, {"name": "Ирицян София", "login": "2С-5", "pass": "147299"}, {"name": "Капутина Елена", "login": "2С-6", "pass": "995591"}, {"name": "Кезероти Адам", "login": "2С-7", "pass": "417933"}, {"name": "Клейменов Кирилл", "login": "2С-8", "pass": "818129"}, {"name": "Кожемяко Михаил", "login": "2С-9", "pass": "245979"}, {"name": "Котельникова Теона", "login": "2С-10", "pass": "993541"}, {"name": "Куликов Иван", "login": "2С-11", "pass": "852881"}, {"name": "Лавриненко Савелий", "login": "2С-12", "pass": "370970"}, {"name": "Лисунова Таисия", "login": "2С-13", "pass": "800362"}, {"name": "Локотькова Елизавета", "login": "2С-14", "pass": "930836"}, {"name": "Ломакин Аким", "login": "2С-15", "pass": "190603"}, {"name": "Мамаев Фëдор", "login": "2С-16", "pass": "867793"}, {"name": "Медведев Михаил", "login": "2С-17", "pass": "222315"}, {"name": "Менчиц Екатерина", "login": "2С-18", "pass": "927222"}, {"name": "Пилия София", "login": "2С-19", "pass": "349919"}, {"name": "Пушкарский Марк", "login": "2С-20", "pass": "632960"}, {"name": "Савин Макар", "login": "2С-21", "pass": "455868"}, {"name": "Свирина Пелагея", "login": "2С-22", "pass": "830743"}, {"name": "Смирнова Алиса", "login": "2С-23", "pass": "959639"}, {"name": "Федорова Аливия", "login": "2С-24", "pass": "773465"}], "3A": [{"name": "Быченок Вероника", "login": "3A-1", "pass": "616198"}, {"name": "Горшкова Мия", "login": "3A-2", "pass": "582501"}, {"name": "Дудкин Мирослав", "login": "3A-3", "pass": "183743"}, {"name": "Епифанов Дмитрий", "login": "3A-4", "pass": "946881"}, {"name": "Загородний Константин", "login": "3A-5", "pass": "155499"}, {"name": "Именинникова Полина", "login": "3A-6", "pass": "961696"}, {"name": "Исаев Василий", "login": "3A-7", "pass": "692531"}, {"name": "Каримова Марианна", "login": "3A-8", "pass": "963553"}, {"name": "Коваленков Прохор", "login": "3A-9", "pass": "928901"}, {"name": "Кузякова Алёна", "login": "3A-12", "pass": "244063"}, {"name": "Малышева Екатерина", "login": "3A-10", "pass": "985975"}, {"name": "Мещерская Оливия", "login": "3A-11", "pass": "347530"}, {"name": "Паливода Елизавета", "login": "3A-15", "pass": "490945"}, {"name": "Портнягина София", "login": "3A-13", "pass": "781528"}, {"name": "Пшиков Иван", "login": "3A-14", "pass": "560556"}, {"name": "Сагура Елизавета", "login": "3A-16", "pass": "864320"}, {"name": "Серваткин Марк", "login": "3A-17", "pass": "778344"}, {"name": "Синицын Платон", "login": "3A-18", "pass": "986568"}, {"name": "Троцюк Василиса", "login": "3A-19", "pass": "977813"}, {"name": "Фимиогли Варвара", "login": "3A-20", "pass": "706693"}, {"name": "Чадаева Изабелла", "login": "3A-21", "pass": "777458"}, {"name": "Шерстюк Макар", "login": "3A-22", "pass": "952956"}], "3B": [{"name": "Ам Энде Фридрих", "login": "3B-17", "pass": "383703"}, {"name": "Божков Леонард", "login": "3B-1", "pass": "825990"}, {"name": "Бородина Ксения", "login": "3B-2", "pass": "768130"}, {"name": "Васильев Михаил", "login": "3B-3", "pass": "718788"}, {"name": "Геловани Эмми", "login": "3B-4", "pass": "323056"}, {"name": "Грановская Виктория", "login": "3B-5", "pass": "964573"}, {"name": "Джабар-заде Тимур", "login": "3B-6", "pass": "381987"}, {"name": "Дорогов Александр", "login": "3B-7", "pass": "709553"}, {"name": "Егорычев Егор", "login": "3B-8", "pass": "402263"}, {"name": "Епифанов Даниил", "login": "3B-9", "pass": "308115"}, {"name": "Исаев Мирослав", "login": "3B-10", "pass": "842475"}, {"name": "Казюленок Катерина", "login": "3B-11", "pass": "228743"}, {"name": "Каменев Платон", "login": "3B-12", "pass": "938195"}, {"name": "Лазарев Глеб", "login": "3B-13", "pass": "350085"}, {"name": "Лобас Ксения", "login": "3B-14", "pass": "278097"}, {"name": "Меркулова Арина", "login": "3B-15", "pass": "511019"}, {"name": "Минченко Екатерина", "login": "3B-16", "pass": "986518"}, {"name": "Петров Александр", "login": "3B-19", "pass": "779656"}, {"name": "Постников Илья", "login": "3B-20", "pass": "146657"}, {"name": "Солдатенков Лука", "login": "3B-21", "pass": "582003"}, {"name": "Третьяков Александр", "login": "3B-22", "pass": "908494"}, {"name": "Федоренко Елизавета", "login": "3B-18", "pass": "137437"}], "3C": [{"name": "Айвазов Владимир", "login": "3С-1", "pass": "903643"}, {"name": "Алькинский Олег", "login": "3С-2", "pass": "689187"}, {"name": "Афанасьев Мартин", "login": "3С-3", "pass": "552306"}, {"name": "Болдырев Герман", "login": "3С-4", "pass": "771447"}, {"name": "Васильев Алексей", "login": "3С-5", "pass": "198843"}, {"name": "Веряскин Ерофей", "login": "3С-6", "pass": "214706"}, {"name": "Волошин Николай", "login": "3С-7", "pass": "270364"}, {"name": "Дашунина Ника", "login": "3С-8", "pass": "710640"}, {"name": "Занозин Федор", "login": "3С-9", "pass": "964890"}, {"name": "Захидис Георгий", "login": "3С-10", "pass": "251849"}, {"name": "Каспарова Вера", "login": "3С-11", "pass": "586827"}, {"name": "Киреева София", "login": "3С-12", "pass": "878683"}, {"name": "Кузнецов Филипп", "login": "3С-13", "pass": "799240"}, {"name": "Кушнарев Василий", "login": "3С-14", "pass": "364316"}, {"name": "Лужбина Пелагея", "login": "3С-15", "pass": "408654"}, {"name": "Осетрова Мария", "login": "3С-16", "pass": "466749"}, {"name": "Осипова Екатерина", "login": "3С-17", "pass": "417227"}, {"name": "Пирогова Алиса", "login": "3С-18", "pass": "681382"}, {"name": "Пугачев Илья", "login": "3С-19", "pass": "725801"}, {"name": "Саджая Мия", "login": "3С-20", "pass": "383833"}, {"name": "Спицеров Вениамин", "login": "3С-21", "pass": "234958"}, {"name": "Струк Клим", "login": "3С-22", "pass": "845349"}], "4A": [{"name": "Алафинов Марк", "login": "4A-1", "pass": "657334"}, {"name": "Алявдин Глеб", "login": "4A-2", "pass": "490946"}, {"name": "Белов Артемий", "login": "4A-3", "pass": "744901"}, {"name": "Борисенко Габриэла", "login": "4A-4", "pass": "457974"}, {"name": "Былино Дмитрий", "login": "4A-5", "pass": "308793"}, {"name": "Гаврилова Полина", "login": "4A-6", "pass": "475636"}, {"name": "Горбачева Полина", "login": "4A-7", "pass": "779526"}, {"name": "Ермилов Платон", "login": "4A-8", "pass": "636625"}, {"name": "Загребин Леонид", "login": "4A-9", "pass": "827509"}, {"name": "Кияшко Варвара", "login": "4A-10", "pass": "337649"}, {"name": "Коцюба Ева", "login": "4A-11", "pass": "898377"}, {"name": "Лазарев Тимофей", "login": "4A-12", "pass": "632155"}, {"name": "Мартиросов Александр", "login": "4A-13", "pass": "233402"}, {"name": "Носикова Александра", "login": "4A-14", "pass": "863150"}, {"name": "Пономаренко Милана", "login": "4A-15", "pass": "402816"}, {"name": "Присяжный Максим", "login": "4A-16", "pass": "135771"}, {"name": "Романченко Федор", "login": "4A-17", "pass": "134137"}, {"name": "Смоленский Евгений", "login": "4A-18", "pass": "119223"}, {"name": "Степанова Мишель", "login": "4A-19", "pass": "113471"}, {"name": "Темирбулатова Марьям", "login": "4A-20", "pass": "320084"}, {"name": "Терещенко Екатерина", "login": "4A-21", "pass": "706318"}, {"name": "Толмазова Ева", "login": "4A-22", "pass": "859002"}, {"name": "Шибанов Илья", "login": "4A-23", "pass": "526821"}, {"name": "Эм Лея", "login": "4A-24", "pass": "501216"}], "4B": [{"name": "Азизова Аливия", "login": "4В-1", "pass": "667873"}, {"name": "Арифуллин Олег", "login": "4В-2", "pass": "145220"}, {"name": "Брагин Даниил", "login": "4В-3", "pass": "213355"}, {"name": "Герич Александра", "login": "4В-4", "pass": "331947"}, {"name": "Данилова Злата", "login": "4В-5", "pass": "199421"}, {"name": "Духин Ярослав", "login": "4В-6", "pass": "667593"}, {"name": "Зиневич Мия", "login": "4В-7", "pass": "634264"}, {"name": "Ирицян Роман", "login": "4В-8", "pass": "239210"}, {"name": "Кулакова Полина", "login": "4В-9", "pass": "781149"}, {"name": "Лаленков Михаил", "login": "4В-10", "pass": "834442"}, {"name": "Лизун Андрей", "login": "4В-11", "pass": "448848"}, {"name": "Мартиросов Михаил", "login": "4В-12", "pass": "934155"}, {"name": "Пищулина Анастасия", "login": "4В-13", "pass": "710666"}, {"name": "Рымарев Максим", "login": "4В-14", "pass": "639602"}, {"name": "Саджая Ева", "login": "4В-15", "pass": "946055"}, {"name": "Семин Георгий", "login": "4В-16", "pass": "170881"}, {"name": "Синцов Иван", "login": "4В-17", "pass": "696805"}, {"name": "Стрижков Александр", "login": "4В-18", "pass": "790435"}, {"name": "Тваури Даниил", "login": "4В-19", "pass": "391554"}, {"name": "Тихоновец Николай", "login": "4В-20", "pass": "262440"}, {"name": "Ушаков Федор", "login": "4В-21", "pass": "738280"}, {"name": "Штельмахов Нина", "login": "4В-22", "pass": "195971"}, {"name": "Эшкинд Борис", "login": "4В-23", "pass": "913609"}]};
+const PORTAL = "https://обучение.киберурок.рф/";
+const CLASSES = Object.keys(ROSTER);
+
+let S = { cls: null, name: null, find: "", shown: false, copied: null };
+const app = document.getElementById("app");
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g,
+  c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const initials = n => n.trim().split(/\s+/).slice(0, 2).map(w => w[0] || "").join("").toUpperCase();
+
+const I_COPY = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+  stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/>
+  <path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></svg>`;
+const I_DONE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+  stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 7"/></svg>`;
+const I_GO = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+  stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4L10 14"/>
+  <path d="M19 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1h5"/></svg>`;
+const I_BACK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+  stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M15 5l-7 7 7 7"/></svg>`;
+
+/* --- копирование: сначала clipboard API, потом запасной путь --- */
+async function copyText(text) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch (e) {}
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.cssText = "position:fixed;top:-1000px;left:0;opacity:0";
+    document.body.appendChild(ta);
+    if (/ipad|iphone|ipod/i.test(navigator.userAgent || "")) {
+      const r = document.createRange();
+      r.selectNodeContents(ta);
+      const sel = window.getSelection();
+      sel.removeAllRanges(); sel.addRange(r);
+      ta.setSelectionRange(0, text.length);
+    } else { ta.select(); }
+    const ok = document.execCommand("copy");
+    document.body.removeChild(ta);
+    return !!ok;
+  } catch (e) { return false; }
+}
+
+function copyBtn(kind, label) {
+  const c = S.copied || {};
+  const done = c.k === kind && c.ok, fail = c.k === kind && !c.ok;
+  return `<button class="cp ${done ? "done" : (fail ? "fail" : "")}" data-copy="${kind}">
+    ${done ? I_DONE : I_COPY}<span>${done ? "Скопировано" : (fail ? "Не вышло" : esc(label))}</span></button>`;
+}
+
+/* --- экран 1: класс --- */
+function viewClass() {
+  const grades = [...new Set(CLASSES.map(c => c[0]))].sort();
+  return `<div class="card">
+    <h1>Выбери свой класс</h1>
+    <p class="sub">Буква класса написана на твоей карточке доступа.</p>
+    <div class="grades">${grades.map(g => `<div class="grade">
+      <div class="gl">${g} класс</div>
+      <div class="chips">${CLASSES.filter(c => c[0] === g).map(c => `
+        <button class="chip" data-cls="${esc(c)}">${esc(c)}<small>${ROSTER[c].length} чел.</small></button>`).join("")}</div>
+    </div>`).join("")}</div>
+  </div>`;
+}
+
+/* --- экран 2: имя --- */
+function viewName() {
+  const q = S.find.trim().toLowerCase();
+  const list = ROSTER[S.cls].filter(k => !q || k.name.toLowerCase().includes(q));
+  return `<button class="back" id="toclass">${I_BACK} Другой класс</button>
+  <div class="card">
+    <h1>Найди себя в списке</h1>
+    <p class="sub">Класс ${esc(S.cls)} · ${ROSTER[S.cls].length} человек</p>
+    <input class="find" id="find" type="search" placeholder="Начни писать фамилию"
+      value="${esc(S.find)}" autocomplete="off" autocorrect="off" spellcheck="false">
+    <div class="names">${list.length ? list.map(k => `
+      <button class="nm" data-name="${esc(k.name)}">
+        <span class="av">${esc(initials(k.name))}</span><span>${esc(k.name)}</span></button>`).join("")
+      : `<div class="none">Никого не нашли. Проверь букву класса или сотри написанное.</div>`}</div>
+  </div>`;
+}
+
+/* --- экран 3: карточка входа --- */
+function viewCard() {
+  const k = ROSTER[S.cls].find(x => x.name === S.name);
+  if (!k) { S.name = null; return viewName(); }
+  const c = S.copied || {};
+  return `<button class="back" id="toname">${I_BACK} Другое имя</button>
+  <div class="card">
+    <div class="who"><span class="av">${esc(initials(k.name))}</span>
+      <span><b>${esc(k.name)}</b><span>КЛАСС ${esc(S.cls)}</span></span></div>
+
+    <div class="field">
+      <div class="fl">ЛОГИН</div>
+      <div class="val ${k.login.length > 13 ? "long" : ""}">${esc(k.login)}</div>
+      ${copyBtn("login", "Копировать логин")}
+      ${c.k === "login" && !c.ok ? `<div class="note">Браузер не дал скопировать. Нажми на логин и удерживай.</div>` : ""}
+    </div>
+
+    <div class="field">
+      <div class="fl">ПАРОЛЬ</div>
+      <div class="pwrow">
+        <span class="pwv">${S.shown ? esc(k.pass) : "••••••"}</span>
+        <button class="eye" id="eye">${S.shown ? "Скрыть" : "Показать"}</button>
+      </div>
+      ${copyBtn("pass", "Копировать пароль")}
+      ${c.k === "pass" && !c.ok ? `<div class="note">Браузер не дал скопировать. Нажми на пароль и удерживай.</div>` : ""}
+    </div>
+
+    <a class="go" href="${esc(PORTAL)}" target="_blank" rel="noopener noreferrer">${I_GO} Войти на Киберурок</a>
+    <p class="addr">${esc(PORTAL)}</p>
+    <p class="tip">Платформа откроется в новой вкладке. Логин и пароль вводи только там —
+      на этой странице их никто не спрашивает.</p>
+
+    <div class="again"><button id="toname2">Другое имя</button><button id="toclass2">Другой класс</button></div>
+  </div>`;
+}
+
+let copyTimer = null;
+function render() {
+  app.innerHTML = !S.cls ? viewClass() : (!S.name ? viewName() : viewCard());
+  const q = id => document.getElementById(id);
+
+  app.querySelectorAll("[data-cls]").forEach(n => n.onclick = () => {
+    S.cls = n.dataset.cls; S.name = null; S.find = ""; render();
+  });
+  app.querySelectorAll("[data-name]").forEach(n => n.onclick = () => {
+    S.name = n.dataset.name; S.shown = false; S.copied = null; render();
+  });
+  const back = () => { S.name = null; S.shown = false; S.copied = null; render(); };
+  const home = () => { S.cls = null; S.name = null; S.find = ""; S.shown = false; S.copied = null; render(); };
+  if (q("toclass")) q("toclass").onclick = home;
+  if (q("toclass2")) q("toclass2").onclick = home;
+  if (q("toname")) q("toname").onclick = back;
+  if (q("toname2")) q("toname2").onclick = back;
+  if (q("eye")) q("eye").onclick = () => { S.shown = !S.shown; render(); };
+
+  if (q("find")) {
+    const inp = q("find");
+    inp.oninput = e => {
+      S.find = e.target.value;
+      render();
+      const again = document.getElementById("find");
+      if (again) { again.focus(); again.setSelectionRange(again.value.length, again.value.length); }
+    };
+  }
+
+  app.querySelectorAll("[data-copy]").forEach(n => n.onclick = async () => {
+    const k = ROSTER[S.cls].find(x => x.name === S.name);
+    if (!k) return;
+    const kind = n.dataset.copy;
+    const ok = await copyText(kind === "pass" ? k.pass : k.login);
+    S.copied = { k: kind, ok };
+    render();
+    if (copyTimer) clearTimeout(copyTimer);
+    copyTimer = setTimeout(() => { S.copied = null; render(); }, ok ? 1800 : 5000);
+  });
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key !== "Escape") return;
+  if (S.name) { S.name = null; S.shown = false; S.copied = null; render(); }
+  else if (S.cls) { S.cls = null; S.find = ""; render(); }
+});
+
+render();
+</script>
+</body>
+</html>
